@@ -7,7 +7,7 @@ O objetivo desta imagem é disponibilizar o conteúdo do repositóio através de
 
 #### Obrigatórios
 
-**GIT_USER:** Usuário do repositório reponsável por fazer o git clone e git pull.
+**GIT_USER:** Usuário do repositório reponsável por fazer o git clone e git pull.  
 **GIT_PASSWORD:** Senha do usuário GIT_USER.
 **GIT_REPO:** Endereço do repositório ao qual será clonado. Formato: github.com/alexiscviurb/docker.git
 **GIT_FOLDER:** Pasta onde o clone será realizado.
