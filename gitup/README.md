@@ -8,16 +8,16 @@ O objetivo desta imagem é disponibilizar o conteúdo do repositóio através de
 #### Obrigatórios
 
 **GIT_USER:** Usuário do repositório reponsável por fazer o git clone e git pull.  
-**GIT_PASSWORD:** Senha do usuário GIT_USER.
-**GIT_REPO:** Endereço do repositório ao qual será clonado. Formato: github.com/alexiscviurb/docker.git
-**GIT_FOLDER:** Pasta onde o clone será realizado.
+**GIT_PASSWORD:** Senha do usuário GIT_USER.  
+**GIT_REPO:** Endereço do repositório ao qual será clonado. Formato: github.com/alexiscviurb/docker.git  
+**GIT_FOLDER:** Pasta onde o clone será realizado.  
 
 #### Opcionais
 
-**GIT_PROTOCOL:** Protocolo a ser utilizado. HTTP ou HTTPS.
-**GIT_BRANCH:** Caso deseje utilizar um branch diferente do master.
-**GIT_TEST_FILE:** Arquivo que será procurado para validar se clone ja foi feito. Padrão: README.md
-**GIT_FREQUENCY:** Período de frequência do git pull. Se não for passado o container vai fazer o clone e depois vai parar. Valor em segundos.
+**GIT_PROTOCOL:** Protocolo a ser utilizado. HTTP ou HTTPS.  
+**GIT_BRANCH:** Caso deseje utilizar um branch diferente do master.  
+**GIT_TEST_FILE:** Arquivo que será procurado para validar se clone ja foi feito. Padrão: README.md  
+**GIT_FREQUENCY:** Período de frequência do git pull. Se não for passado o container vai fazer o clone e depois vai parar. Valor em segundos.  
 
 ### Exemplo de uso
 
