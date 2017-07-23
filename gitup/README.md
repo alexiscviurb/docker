@@ -27,4 +27,6 @@ docker run -d --name gitup_repo -e GIT_USER=alexiscviurb -e GIT_PASSWORD=senha -
 
 Montar o volume em outro container:
 
+```bash
 docker run -d --volumes-from gitup_repo app_image
+```
