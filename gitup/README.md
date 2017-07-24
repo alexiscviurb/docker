@@ -19,6 +19,12 @@ O objetivo desta imagem é disponibilizar o conteúdo do repositóio através de
 **GIT_TEST_FILE:** Arquivo que será procurado para validar se clone ja foi feito. Padrão: README.md  
 **GIT_FREQUENCY:** Período de frequência do git pull. Se não for passado o container vai fazer o clone e depois vai parar. Valor em segundos.  
 
+### Download da imagem
+
+```bash
+docker pull alexiscviurb/gitup
+```
+
 ### Exemplo de uso
 
 Executando o container para git clone do repositório:
