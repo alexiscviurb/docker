@@ -5,9 +5,6 @@
 [ "$UP_USER" ] || { echo "Nenhum usuário informado!" ; exit 1; }
 [ "$UP_FOLDER" ] || { echo "Nenhuma pasta informado!" ; exit 1; }
 
-[ "$UP_FREQUENCY" ] || UP_FREQUENCY=7200
-
-
 if [ ! -f /root/.ssh/id_rsa ]; then
 	# Gera chave 
 	ssh-keygen -t rsa -b 4096 -N "" -f /root/.ssh/id_rsa
@@ -24,9 +21,15 @@ gitUp () {
         fi
 }
 
-while true; do
+# Faz o pull para todos os repositórios definidos em UP_REPOS
+fr REPO in $UP_REPOS; do
+	gitUp $REPO
+done
+
+# Se foi definida frequência para executar o pull, neste momento entra no loop.
+if [ "$UP_FREQUENCY" ]; then
 	for REPO in $UP_REPOS; do
 		gitUp $REPO
 	done
 	sleep $UP_FREQUENCY
-done
+fi
