@@ -10,7 +10,7 @@ gitUp () {
 	ssh $UP_USER@$UP_HOST -o PasswordAuthentication=no "cd $UP_FOLDER/$repo/ && git fetch origin +refs/heads/*:refs/heads/* && git reset --soft"
 	if [ $? -gt 0 ]; then
                 echo "Falha ao executar ssh! Pode ser necessário copiar a chave ssh para o servidor de destino!"
-                echo "COMANDO: ssh-copy-id -i ~/.ssh/id_rsa.pub $UP_USEo@$UP_HOST"
+                echo "COMANDO: ssh-copy-id -i ~/.ssh/id_rsa.pub $UP_USER@$UP_HOST"
         fi
 }
 
