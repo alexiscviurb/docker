@@ -1,4 +1,4 @@
-FROM mindk/php5.3.29-apache
+FROM php:5.6-apache
 MAINTAINER Alexis Cvirkun Urbanskyy <alexiscviurb@gmail.com>
 
 RUN a2enmod rewrite
