@@ -7,8 +7,8 @@ O objetivo desta imagem é disponibilizar o conteúdo do repositóio através de
 
 #### Necessárias
 
-**GIT_USER:** Usuário do repositório reponsável por fazer o git clone e git pull. Conflita com **GIT_USER_FILE:**   
-**GIT_USER_FILE:** Secret file que contém o usuário repositório reponsável por fazer o git clone e git pull. Conflita com **GIT_USER:**  
+**GIT_USER:** Usuário do repositório reponsável por fazer o git clone e git pull. Conflita com **GIT_USER_FILE**   
+**GIT_USER_FILE:** Secret file que contém o usuário repositório reponsável por fazer o git clone e git pull. Conflita com **GIT_USER**  
 **GIT_PASSWORD:** Senha do usuário **GIT_USER**. Conflita com **GIT_PASSWORD_FILE**  
 **GIT_PASSWORD_FILE:** Secret file com a senha do usuário **GIT_USER**. Conflita com **GIT_PASSWORD**  
 **GIT_REPO:** Endereço do repositório ao qual será clonado. Formato: github.com/alexiscviurb/docker.git  
