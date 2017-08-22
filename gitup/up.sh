@@ -1,15 +1,33 @@
 #!/bin/sh
 
-# Variáveis obrigatórias
-[ "$GIT_USER" ] || { echo "Usuário Git não informado!" ; exit 1; }
-[ "$GIT_PASSWORD" ] || { echo "Senha Git não informada!" ; exit 1; }
-[ "$GIT_REPO" ] || { echo "Repositório Git não informado!" ; exit 1; }
-[ "$GIT_FOLDER" ] || { echo "Pasta para git clone não informada!" ; exit 1; }
+# Funções
 
-# Variáveis opcionais
-[ "$GIT_PROTOCOL" ] || GIT_PROTOCOL=https
-[ "$GIT_BRANCH" ] || GIT_BRANCH=master
-[ "$GIT_TEST_FILE" ] || GIT_TEST_FILE=README.md
+file_env() {
+	local var="$1"
+	local fileVar="${var}_FILE"
+	local def="${2:-}"
+	if [ "${!var:-}" ] && [ "${!fileVar:-}" ]; then
+		echo >&2 "ERROR: Ambas variáveis $var e $fileVar estão declaradas (Apenas uma deve ser utilizada)!"
+		exit 1
+	fi
+	local val="$def"
+	if [ "${!var:-}" ]; then
+		val="${!var}"
+	elif [ "${!fileVar:-}" ]; then
+		val="$(< "${!fileVar}")"
+	fi
+	export "$var"="$val"
+	unset "$fileVar"
+}
+
+# Variáveis obrigatórias
+[ "$GIT_REPO" ] || { echo >&2 "ERROR: Repositório Git não informado!" ; exit 1; }
+
+file_env 'GIT_USER'
+[ "$GIT_USER" ] || { echo >&2 "ERROR: Usuário Git não informado!" ; exit 1; }
+
+file_env 'GIT_PASSWORD'
+[ "$GIT_PASSWORD" ] || { echo >&2 "ERROR: Senha Git não informada!" ; exit 1; }
 
 # Cria pasta de clone caso não exista
 [ ! -d "$GIT_FOLDER" ] && mkdir -p $GIT_FOLDER
