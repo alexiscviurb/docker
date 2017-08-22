@@ -11,6 +11,6 @@ RUN apk add --no-cache \
 	mysql-client \
 	libpng-dev
 
-RUN docker-php-ext-install pgsql pdo_pgsql mysql pdo_mysql
+RUN docker-php-ext-install mysql pdo_mysql
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ 
 RUN docker-php-ext-install gd
