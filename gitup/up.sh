@@ -23,13 +23,13 @@ file_env() {
 }
 
 # Valida variáveis
-${GIT_REPO:?"Repositório Git não informado!"}
+[ "$GIT_REPO" ] || { echo "Repositório Git não informado!" ; exit 1; }
 
 file_env 'GIT_USER'
-${GIT_USER:?"Usuário Git não informado!"}
+[ "$GIT_USER" ] || { echo "Usuário Git não informado!" ; exit 1; }
 
 file_env 'GIT_PASSWORD'
-${GIT_PASSWORD:?"Senha Git não informada!"}
+[ "$GIT_PASSWORD" ] || { echo "Senha Git não informado!" ; exit 1; }
 
 # Cria pasta de clone caso não exista
 [ ! -d "$GIT_FOLDER" ] && mkdir -p $GIT_FOLDER
