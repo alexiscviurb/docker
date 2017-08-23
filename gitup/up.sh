@@ -1,33 +1,35 @@
 #!/bin/sh
 
-# Funções
-
+# Função que verifica se foi passado argumento como arquivo
 file_env() {
-	local var="$1"
-	local fileVar="${var}_FILE"
-	local def="${2:-}"
-	if [ "${!var:-}" ] && [ "${!fileVar:-}" ]; then
-		echo >&2 "ERROR: Ambas variáveis $var e $fileVar estão declaradas (Apenas uma deve ser utilizada)!"
+	local VAR="$1"
+	local FILEVAR="${VAR}_FILE"
+	local DEF="${2:-}"
+	if eval [ "\${$VAR}" ] && eval [ "\${$FILEVAR}" ]; then
+		echo >&2 "ERROR: Ambas variáveis $VAR e $FILEVAR estão declaradas (Apenas uma deve ser utilizada)!"
 		exit 1
 	fi
-	local val="$def"
-	if [ "${!var:-}" ]; then
-		val="${!var}"
-	elif [ "${!fileVar:-}" ]; then
-		val="$(< "${!fileVar}")"
+	VAL="$DEF"
+	if eval [ "\${$VAR}" ]; then
+		eval VAL="\${$VAR}"
+	elif eval [ "\${$FILEVAR}" ]; then
+		eval FILE="\${$FILEVAR}"
+		if [ -f "${FILE}" ]; then
+			VAL="$(< "${FILE}")"
+		fi
 	fi
-	export "$var"="$val"
-	unset "$fileVar"
+	export "$VAR"="$VAL"
+	unset "$FILEVAR"
 }
 
-# Variáveis obrigatórias
-[ "$GIT_REPO" ] || { echo >&2 "ERROR: Repositório Git não informado!" ; exit 1; }
+# Valida variáveis
+${GIT_REPO:?"Repositório Git não informado!"}
 
 file_env 'GIT_USER'
-[ "$GIT_USER" ] || { echo >&2 "ERROR: Usuário Git não informado!" ; exit 1; }
+${GIT_USER:?"Usuário Git não informado!"}
 
 file_env 'GIT_PASSWORD'
-[ "$GIT_PASSWORD" ] || { echo >&2 "ERROR: Senha Git não informada!" ; exit 1; }
+${GIT_PASSWORD:?"Senha Git não informada!"}
 
 # Cria pasta de clone caso não exista
 [ ! -d "$GIT_FOLDER" ] && mkdir -p $GIT_FOLDER
