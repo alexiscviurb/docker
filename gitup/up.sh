@@ -15,7 +15,7 @@ file_env() {
 	elif eval [ "\${$FILEVAR}" ]; then
 		eval FILE="\${$FILEVAR}"
 		if [ -f "${FILE}" ]; then
-			VAL="$(< "${FILE}")"
+			VAL=`cat ${FILE}`
 		fi
 	fi
 	export "$VAR"="$VAL"
