@@ -5,10 +5,9 @@ ENV TZ "America/Sao_Paulo"
 
 RUN apk add --no-cache \
 	tzdata \
-	libpq \
+	postgresql-dev \
 	libjpeg-turbo-dev \
 	freetype-dev \
-	postgresql-client \
 	libpng-dev
 
 RUN docker-php-ext-install pgsql pdo_pgsql
