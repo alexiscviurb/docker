@@ -8,7 +8,7 @@ RUN apk add --no-cache \
 	libpq \
 	libjpeg-turbo-dev \
 	freetype-dev \
-	mysql-client \
+	postgresql-client \
 	libpng-dev
 
 RUN docker-php-ext-install pgsql pdo_pgsql
