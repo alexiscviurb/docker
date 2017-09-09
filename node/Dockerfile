@@ -2,7 +2,7 @@ FROM node:alpine
 
 MAINTAINER Alexis Cvirkun Urbanskyy <alexiscviurb@gmail.com>
 
-ENV ANALYTICS_DATA /data
+ENV APP_DATA /data
 
 EXPOSE 4200
 
